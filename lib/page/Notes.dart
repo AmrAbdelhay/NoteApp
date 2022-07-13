@@ -40,38 +40,49 @@ class _NotesPageState extends State<NotesPage> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      title: Text(
-        'Notes',
-        style: TextStyle(fontSize: 24),
-      ),
-      // actions: [Icon(Icons.search), SizedBox(width: 12)],
-    ),
-    body: Center(
-      child: isLoading
-          ? CircularProgressIndicator()
-          : notes.isEmpty
-          ? Text(
-        'No Notes',
-        style: TextStyle(color: Colors.white, fontSize: 24),
-      )
-          : buildNotes(),
-    ),
-    floatingActionButton: FloatingActionButton(
-      backgroundColor: Colors.black,
-      child: Icon(Icons.add),
-      onPressed: () async {
-        await Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => AddEditNotePage()),
-        );
+  Widget build(BuildContext context) => Container(
 
-        refreshNotes();
-      },
+    child: Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Text(
+          'Notes',
+          style: TextStyle(fontSize: 24),
+        ),
+        // actions: [Icon(Icons.search), SizedBox(width: 12)],
+      ),
+      body: Center(
+        child: isLoading
+            ? CircularProgressIndicator()
+            : notes.isEmpty
+            ? Text(
+          'No Notes',
+          style: TextStyle(color: Colors.white, fontSize: 24),
+        )
+            : buildNotes(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        child: Icon(Icons.add,
+        color: Colors.amber,),
+        onPressed: () async {
+          await Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => AddEditNotePage()),
+          );
+
+          refreshNotes();
+        },
+      ),
     ),
   );
 
      buildNotes() => Container(
+         decoration: BoxDecoration(
+           image: DecorationImage(
+             image: AssetImage('assets/images/back.jpg'),
+             fit: BoxFit.cover,
+           ),
+         ),
        padding: EdgeInsets.all(10),
        child: StaggeredGridView.countBuilder(
     padding: EdgeInsets.all(20),
