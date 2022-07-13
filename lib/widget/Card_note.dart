@@ -66,7 +66,7 @@ class NoteCardWidget extends StatelessWidget {
           ),
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: BorderRadius.circular(20),
         ),
       ),
     );
