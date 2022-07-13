@@ -33,6 +33,9 @@ class NoteCardWidget extends StatelessWidget {
     final minHeight = getMinHeight(index);
 
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
       color: color,
       child: Container(
         constraints: BoxConstraints(minHeight: minHeight),
